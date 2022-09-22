@@ -1,0 +1,66 @@
+import java.util.*;
+class number{
+    int a=50;
+    int b=75;
+}
+class operate1 extends number
+{
+    public void find()
+    {
+      int h=0;
+      if(a<b)
+      {
+          for(int i=1;i<a/2+1;i++)
+          {
+              if((a%i==0) && (b%i==0))
+              {
+                  h=i;
+              }
+          }
+      }
+      if(a>b)
+      {
+          for(int i=1;i<(b/2)+1;i++)
+          {
+              if(a%i==0 && b%i==0)
+              {
+                  h=i;
+              }
+          }
+      }
+      
+          System.out.println("hcf: "+h);
+    }
+    
+}
+class operate2 extends number
+{
+    public void find()   //overriding <-
+    {
+        int l=0;
+        for(int i=Math.max(a,b);i<a*b-1;i++)
+            {
+              if(i%a==0 && i%b==0)
+                {
+                    l=i;
+                    break;
+                }
+            }
+        System.out.println("lcm: "+l);
+    }
+}
+public class Main 
+{
+ public static void main(String arg[])
+ {
+     operate1 obj=new operate1();
+     obj.find();
+     operate2 ob=new operate2();
+     ob.find();
+ }
+}
+
+
+Output:
+hcf: 25
+lcm: 150
