@@ -1,0 +1,59 @@
+class numbers
+{
+int a[]={1,2,3,4,5,6,7,8,9,10};
+int l=a.length;
+}
+class addition extends numbers
+{
+    public int addnum()
+    {
+        int s=0;
+        for(int i=0;i<l;i++)
+        {
+            s=s+a[i];
+        }
+        return s;
+    }
+}
+class multiplication extends numbers
+{
+    public int mulnum()
+    {
+        int p=1;
+        for(int i=0;i<l;i++)
+        {
+            p=p*a[i];
+        }
+        return p;
+    }
+}
+class avg extends addition
+{
+    public double average()
+    {
+        int sum =addnum();
+        double d=Double.valueOf(sum);
+        double av=d/10;
+        return av;
+    }
+}
+public class Main
+{
+public static void main(String arg[])
+{
+    addition o= new addition();
+    multiplication o1=new multiplication();
+    avg o2=new avg();
+    int x=o.addnum();
+    int y=o1.mulnum();
+    double z=o2.average();
+    System.out.print("sum: "+x+"\nprod: "+y+"\navg: "+z);
+}
+}
+
+
+
+Output:
+sum: 55
+prod: 3628800
+avg: 5.5
