@@ -1,0 +1,27 @@
+interface test
+{
+	final int a=15;
+	void type();
+	
+}
+class sub implements test
+{
+	public void type()
+	{
+		System.out.println("interface....");
+
+	}
+}
+class Main extends sub
+{
+	public static void main(String[] args)
+	{
+		sub obj=new sub();
+		obj.type();
+		System.out.print(a);
+	}
+}
+
+Output:
+interface....
+15
