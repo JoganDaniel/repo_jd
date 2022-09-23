@@ -1,0 +1,33 @@
+abstract class data {
+	abstract void meth1();
+	void meth2()
+	{
+		System.out.println("hi hello");
+	}
+}
+class child extends data
+{
+	void meth1()
+	{
+		System.out.print("hello");
+	}
+	void meth2()
+	{
+		System.out.print("hi");
+	}
+}
+class Main
+{
+	public static void main(String[] args)
+	{
+		child ob=new child();
+		ob.meth1();
+		System.out.println();
+		ob.meth2();
+		
+	}
+}
+
+Output:
+hello
+hi
