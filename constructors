@@ -1,0 +1,23 @@
+class data {
+	String name;
+	int age;
+
+	data(String name,int age) {
+		this.name=name;
+		this.age=age;
+	}
+
+}
+class Main
+{
+	public static void main(String[] args)
+	{
+		data ob=new data("jd",21);
+		System.out.print(ob.name+" "+ob.age);
+		
+		
+	}
+}
+
+Output:
+jd 21
