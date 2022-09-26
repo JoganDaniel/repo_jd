@@ -1,0 +1,62 @@
+Q.A student will not be allowed to sit in exam if his/her attendence is less than 75%.
+Take following input from user
+Number of classes held
+Number of classes attended.
+And print
+percentage of class attended
+Is student is allowed to sit in exam or not.
+Modify the above question to allow student to sit if he/she has medical cause. Ask user if he/she has medical cause or not ( 'Y' or 'N' ) and print accordingly.
+
+A.
+import java.util.*;
+
+class Main
+{
+
+        public static void main(String[]args)
+         {
+        	Scanner s=new Scanner(System.in);
+        	System.out.print("Ener name: ");
+        	String name=s.next();
+        	System.out.println("---------------------------------");
+        	System.out.print("Enter total classes: ");
+        	int tot=s.nextInt();
+        	System.out.println("----------------------------------");
+        	System.out.print("Enter number of days present: ");
+        	int p=s.nextInt();
+        	System.out.println("----------------------------------");
+        	double per=(double)((p*100)/tot);
+        	System.out.print("Do u have any health issues:(Y/N): ");
+        	char y=s.next().charAt(0);
+        	System.out.println("----------------------------------");
+        	System.out.println(per);
+        	if(per>=75.0)
+        	{
+        		System.out.println("You are allowed");
+        	}
+        	else
+        	{
+        		if(y=='Y')
+        		{
+        			System.out.println("You are allowed");
+        	    }
+        		else
+        		{
+        			System.out.println("You are not allowed");
+        		}
+        	}
+
+        }
+}  
+
+Ouyput:
+Enter name: jd
+---------------------------------
+Enter total classes: 50
+----------------------------------
+Enter number of days present: 40
+----------------------------------
+Do u have any health issues:(Y/N): N
+----------------------------------
+Your % is :80.0
+You are allowed
