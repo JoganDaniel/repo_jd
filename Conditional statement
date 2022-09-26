@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+     Scanner s=new Scanner(System.in);
+     int a=10,b=5,c=7;
+     if(a>b && a>c)
+     {
+    	 System.out.print(a+" is >");
+     }
+     else if(b>a && b>c)
+     {
+    	 System.out.print(b+" is >");
+     }
+     else
+     {
+    	 System.out.print(c+" is >");
+     }
+	}
+}
+
+Output:
+10 is >
