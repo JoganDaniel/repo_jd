@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args)
+	{
+     Scanner s=new Scanner(System.in);
+     int l=s.nextInt();
+     String a[]=new String[l];
+     for(int i=0;i<l;i++)
+     {
+    	 a[i]=s.next();
+     }
+     Arrays.sort(a);
+     for(String b:a)
+     {
+    	 System.out.println(b);
+     }
+	}
+}
+
+Output:
+3
+is
+well
+all
+all
+is
+well
