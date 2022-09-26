@@ -7,18 +7,20 @@ public class Main
      int a=10,b=5,c=7;
      if(a>b && a>c)
      {
-    	 System.out.print(a+" is >");
+    	 System.out.println(a+" is >");
      }
      else if(b>a && b>c)
      {
-    	 System.out.print(b+" is >");
+    	 System.out.println(b+" is >");
      }
      else
      {
-    	 System.out.print(c+" is >");
+    	 System.out.println(c+" is >");
      }
+	int d=(c>b) ? c : b;
+	System.out.print(d +" is >");
 	}
 }
-
 Output:
 10 is >
+7 is >
