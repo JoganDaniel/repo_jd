@@ -1,0 +1,30 @@
+public class Main
+{
+	public static void main(String[] args)
+	{
+		int a=65;
+		char c=(char)a; //int to char
+		System.out.println(c);
+		String s="Zoho";
+		String b="7";
+		System.out.println(Integer.toString(a)+"str"); //int to string
+		System.out.println((double)a*2.5); //int to double
+		System.out.println(Integer.valueOf(b)+3); //str to int
+		System.out.println(s.charAt(2)); //str to char
+		System.out.println(Character.toString(c)); //char to  str
+		System.out.println((byte)(a*50)); //double to byte
+		boolean x=7>9;
+		System.out.println(x);
+		
+	}
+}
+
+Output:
+A
+65str
+162.5
+10
+h
+A
+-78
+false
