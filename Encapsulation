@@ -1,0 +1,52 @@
+import java.util.*;
+class Account
+{
+	private String name;
+	private int age;
+	private double per;
+	
+	public void setname(String name)
+	{
+		this.name=name;
+	}
+	public String getname()
+	{
+		return name;
+	}
+	public void setage(int age)
+	{
+		this.age=age;
+	}
+	public int getage()
+	{
+		return age;
+	}
+	public void setper(double per)
+	{
+		this.per=per;
+	}
+	public double getper()
+	{
+		return per;
+	}
+}
+public class Main
+{
+	public static void main(String args[])
+	{
+		Account ob=new Account();
+		Scanner s=new Scanner(System.in);
+		ob.setname(s.next());
+		ob.setage(s.nextInt());
+		ob.setper(s.nextDouble());
+		System.out.println("name:"+ob.getname()+"\nage:"+ob.getage()+"\npercentage:"+ob.getper());
+	}
+}
+
+Output:
+Johan
+21
+90.5
+name:Johan
+age:21
+percentage:90.5
