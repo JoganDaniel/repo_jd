@@ -1,0 +1,55 @@
+import java.util.*;
+
+class Main
+{
+	public static int sum(int z)
+	{
+		int d=0,s=0;
+		while(z>0)
+		{
+			d=z%10;
+			s=s+d;
+			z=z/10;
+		}
+		return s;
+	}
+	public static int rev(int x)
+	{
+		int d=0,r=0;
+		while(x>0)
+		{
+			d=x%10;
+			r=r*10+d;
+			x=x/10;
+		}
+		return r;
+	}
+
+        public static void main(String[]args)
+         {
+        	Scanner s=new Scanner(System.in);
+        	int m=s.nextInt();
+        	int n=s.nextInt();
+        	for(int i=m+1;i<n;i++)
+        	{
+        		int a=sum(i);
+        		int b=rev(a);
+        		if(a*b==i)
+        		{
+        			System.out.println(i);
+        		}
+        	}
+         }
+}
+
+Output:
+0
+100
+1
+81
+
+
+1000
+2000
+1458
+1729
