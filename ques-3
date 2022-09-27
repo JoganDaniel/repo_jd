@@ -10,9 +10,9 @@ public class Mains {
 	public static void main(String[]args)
     {
    	Scanner s=new Scanner(System.in);
-    System.out.println("Sentence:");
+    System.out.print("Sentence:");
    	String st=s.nextLine();
-    System.out.println("key:");
+    System.out.print("key:");
    	String key=s.nextLine();
    	key=key.repeat(10);
    	String ans="";
