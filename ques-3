@@ -1,0 +1,60 @@
+import java.util.*;
+
+public class Mains {
+	public static int val(char z)
+	{
+		int y=((int)z)-96;
+		return y;
+	}
+
+	public static void main(String[]args)
+    {
+   	Scanner s=new Scanner(System.in);
+    System.out.println("Sentence:");
+   	String st=s.nextLine();
+    System.out.println("key:");
+   	String key=s.nextLine();
+   	key=key.repeat(10);
+   	String ans="";
+   	String a[]=st.split(" ");
+   	char b[]=key.toCharArray();
+   	System.out.println();
+   	for(String x:a)
+   	{
+   		char k[]=x.toCharArray();
+   		int l=x.length();
+   		for(int i=0;i<l;i++)
+   		{
+   			int alt=k[i]+val(b[i]);
+   			if(Character.isUpperCase(k[i]))
+   			{
+   				if(alt<91) {
+   				ans+=(char)alt;
+   				}
+   				else {
+   					ans+=(char)(alt-26);
+   				}
+   			}
+   			else if(Character.isLowerCase(k[i]))
+   			{
+   				if(alt<122)
+   				{
+   					ans+=(char)alt;
+   				}
+   				else
+   				{
+   					ans+=(char)(alt-26);
+   				}
+   			}
+   		}
+   		ans+=" ";
+   	}
+   	System.out.println(ans);
+    }
+}
+
+Output:
+Sentence:Please encrypt this text
+key:abcde
+
+Qnhexf fpfvdqv ujlw ugax
