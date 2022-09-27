@@ -1,0 +1,48 @@
+class data
+{
+ public static void main(String args[])
+ {
+	 int a=5;
+	 int ar[]=new int[10];
+	 String s=null;
+	 try
+	 {
+		 int x=a/0;
+		 ar[16]=9;
+	 }
+	 catch(ArithmeticException e)
+	 {
+		 System.out.println("Divided by 0");
+		 System.out.println(e);
+	 }
+	 try
+	 {
+		 ar[16]=22;
+	 }
+	 catch(ArrayIndexOutOfBoundsException ex)
+	 {
+		 System.out.println("give correct array index");
+		 System.out.println(ex);
+	 }
+	 try
+	 {
+		 int l=s.length();
+	 }
+	 catch(NullPointerException ec){
+		 System.out.println("String is null");
+		 System.out.println(ec);
+	 }
+	 finally {
+		 System.out.println("Enter a value for the string");
+	 }
+ }
+}
+
+Output:
+Divided by 0
+java.lang.ArithmeticException: / by zero
+give correct array index
+java.lang.ArrayIndexOutOfBoundsException: Index 16 out of bounds for length 10
+String is null
+java.lang.NullPointerException: Cannot invoke "String.length()" because "s" is null
+Enter a value for the string
