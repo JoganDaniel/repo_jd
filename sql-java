@@ -1,0 +1,42 @@
+MySQL workbench:
+
+create database attend;
+USE attend;
+create table student(
+roll_no int not null primary key,
+fname varchar(25),
+lname varchar(25),
+gender varchar(7),
+mobile int,
+address varchar(30),
+attendance char(1)
+);
+insert into student
+values(01,'jon','snow','M',5676,'winterfell','p');
+insert into student
+values(02,'ned','stark','M',7898,'kings landing','p'),(03,'arya','stark','F',9786,'bravos','a');
+select * from student;
+select * from sub;
+
+Java code:
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.*;
+import java.sql.Statement;
+
+public class Main
+{
+	public static void main(String args[]) throws SQLException
+	{
+		Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/attend","root","johandan77");
+		Statement stmt=con.createStatement();
+		//String s="INSERT INTO student values(04,'johan','dan','M',7777,'kk','p')";
+		//String s="UPDATE student set fname='rob' where roll_no=02";
+		//String s="create table sub(roll_no int primary key, subject varchar(50))";
+		String s="insert into sub values(01,'maths'),(02,'science'),(03,'cs'),(04,'swift')";
+		stmt.execute(s);
+		con.close();
+		System.out.print("success");
+	}
+}
