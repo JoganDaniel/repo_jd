@@ -1,0 +1,603 @@
+----------class 1-------------------
+package project;
+import java.util.*;
+
+public class Main{
+	public static String zz="------".repeat(10);
+	public static void main(String[] args) 
+	{
+     int choice=0;
+     System.out.println("\t\t\tWELCOME");
+     while(choice!=3) {
+     Scanner s=new Scanner(System.in);
+     System.out.println("->Sign Up: Enter 1\n->Log in: Enter 2\n->Exit: Enter 3");
+     choice=s.nextInt();
+     signupcreds obj=new signupcreds();
+     System.out.println(zz);
+     switch(choice)
+     {
+     case 1:
+    	obj.signup();
+    	det.detail();
+    	 break;
+     case 2:
+    	 boolean q=obj.loguser();
+    	 if(q==false)
+    		 break;
+    	 break;
+     case 3:
+    	 System.out.println("\t\t\tTHANK YOU");
+    	 s.close();
+    	 break;
+     default:
+    	 System.out.println("Please enter correct choice\n");
+     }
+     }
+	}
+}
+
+------------class 2-------------
+package project;
+import java.util.regex.Pattern;
+                                              //validate
+public class one
+{
+	public static boolean getuser(String email)
+	{
+		String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                "[a-zA-Z0-9_+&*-]+)*@" + 
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                "A-Z]{2,7}$"; 
+                  
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) {
+        	return false; }
+        return pat.matcher(email).matches();
+	}
+	public static boolean getpass(String pass)
+		{
+			int x=0,y=0,z=0;
+			char ch[]=pass.toCharArray();
+			for(char i:ch)
+			{
+				if(Character.isLowerCase(i) || Character.isWhitespace(i))
+					continue;
+				else if(Character.isUpperCase(i))
+					x+=1;
+				else if(Character.isDigit(i))
+					y+=1;
+				else
+					z+=1;
+			}
+			if(x>0 && y>0 && z>0 && ch.length>=8) {
+				return true;
+			}
+			return false;
+		}
+}
+
+------class 3-------------
+package project;
+import java.util.*;
+							                          //user-name and pass
+public class signupcreds{
+	static String email;
+	static String email1;
+	static HashMap<String,String> map=new HashMap<>();
+	static Scanner s=new Scanner(System.in);
+	public String signup(){     //sign up user name
+	 
+	 System.out.println("Enter your email-id");
+	 email=s.next();
+	 boolean y=one.getuser(email);
+	 while(y==false) {
+		 System.out.println("Enter valid email-id");
+   	 email=s.next();
+		 y=one.getuser(email);
+	 }
+	 
+	 signpass(email);
+	 return email;
+	}
+	 public void signpass(String email) {    //sign up password
+	 System.out.println(Main.zz+"\nEnter password");
+	 String pass=s.next();
+	 boolean y=one.getpass(pass);
+	 while(y==false) {
+		 System.out.println("Password should be of 8 characters with atleast one \n\t*uppercase alphabet\n\t*number\n\t*special character");
+		 System.out.println("Enter valid password: ");
+		 pass=s.next();
+		 y=one.getpass(pass);
+		 }
+	 map.put(email,pass);
+	 System.out.println(Main.zz);
+	 }
+	 
+	 public boolean loguser()       //login user name
+	 {
+		 System.out.println("Enter your email-id");
+		 email1=s.next();
+		 boolean y=one.getuser(email1);
+		 while(y==false) {
+			 System.out.println("Enter valid email-id");
+	   	     email1=s.next();
+			 y=one.getuser(email1);
+		 }
+		 if(map.containsKey(email1)) {
+			 logpass(email1);
+		     return true;
+		 }
+		 else {
+			 System.out.println("You haven't singed up yet\n"+Main.zz);
+			 return false;}
+	 }
+	 public void logpass(String email) {       //login password
+		 System.out.println(Main.zz+"\nEnter password");
+		 String pass=s.next();
+		 boolean y=one.getpass(pass);
+		 while(y==false) {
+			 System.out.println("Enter correct password");
+			 pass=s.next();
+			 y=one.getpass(pass);
+			 }
+		 if(pass.equals(map.get(email))) {
+			 det.execute();
+		 }
+		 else {
+			 System.out.println("Password Mismatch\n"+Main.zz);
+		 }
+		 }
+}
+
+-------classs 4-------
+package project;
+
+import java.util.*;
+
+public class det extends signupcreds{
+	static Scanner s=new Scanner(System.in);
+	static HashMap<String,det> m=new HashMap<>();
+	int id;
+	String name;
+	int age;
+	char gender;
+	String city;
+	det(int id,String name,int age,char gender,String city)
+	{
+		this.id=id;
+		this.name=name;
+		this.age=age;
+		this.gender=gender;
+		this.city=city;
+	}
+	public void setid(int id) {
+		this.id=id;}
+	public void setname(String name) {
+		this.name=name;}
+	public void setage(int age) {
+		this.age=age;}
+	public void setgender(char gender) {
+		this.gender=gender;}
+	public void setcity(String city) {
+		this.city=city;}
+	
+	public int getid() {
+		return this.id;}
+	public String getname() {
+		return this.name;}
+	public int getage() {
+		return this.age;}
+	public char getgender() {
+		return this.gender;}
+	public String getcity() {
+		return this.city;}
+
+	public static void detail()
+	{
+		//Scanner s=new Scanner(System.in);
+		System.out.println("Please fill your details...\n");
+		int id1=0;
+		String name1="";
+		boolean y=false;
+		System.out.print("Enter your id: ");
+		while(true) {
+		String tid=s.nextLine();
+		y=details.checkid(tid);
+		if(y==true) {
+			id1=Integer.parseInt(tid);
+			break;
+		}
+		}
+		System.out.print("Enter your Name: ");
+		while(true) {
+			name1=s.nextLine();
+			y=details.checkname(name1);
+			if(y==true) {
+				break;
+			}
+		}
+		System.out.print("Enter your age: ");
+		int age1=0;
+		while(true) {
+		String tage=s.nextLine();
+		y=details.checkid(tage);
+		if(y==true) {
+			age1=Integer.parseInt(tage);
+			break;
+		}
+		}
+		System.out.print("Enter your Gender:(m or f) ");
+		char gender1='_';
+		while(true) {
+		gender1=s.nextLine().charAt(0);
+		if(gender1=='m' || gender1=='f') {
+			break;
+		}
+		else {
+			System.out.println("Enter either m or f!!");
+		}
+		}
+		String city1="";
+		System.out.print("Enter your City: ");
+		while(true) {
+			city1=s.nextLine();
+			y=details.checkname(city1);
+			if(y==true) {
+				break;
+			}
+		}
+		
+		det ob=new det(id1,name1,age1,gender1,city1);
+		m.put(email,ob);
+		System.out.println("\t\tYou have filled your details successfully\n");
+		System.out.println(Main.zz);
+	}
+	public static void execute() {
+		
+		int choice=0;
+		while(choice!=5) {
+		System.out.println("Display all details: Enter 1\nUpdate any detail: Enter 2\nDisplay a single detail: Enter 3\n"
+				          +"Display every users along with details: Enter 4\nLog Out: Enter 5");
+		choice=s.nextInt();
+		switch(choice)
+		{
+		case 1:
+			printer(email1);
+			break;
+		case 2:
+			editor();
+			System.out.println(Main.zz);
+			break;
+		case 3:
+			display();
+			System.out.println(Main.zz);
+			break;
+		case 4:
+			displayall();
+			System.out.println(Main.zz);
+			break;
+		case 5:
+			System.out.println(Main.zz);
+			break;
+		default:
+			System.out.println("Enter values 1-5");
+		}
+		}
+	}
+	public static void printer(String emails)
+	{
+	      det o=m.get(emails);
+		System.out.println("\nName: "+o.getname()+"\nDetails:\n");
+		System.out.println("Id: "+o.getid());
+		//System.out.println("Name: "+o.getname());
+		System.out.println("Age: "+o.getage());
+		System.out.println("Gender: "+o.getgender());
+		System.out.println("City: "+o.getcity()+"\n"+Main.zz);
+	}
+	public static void editor()
+	{
+		det obj=m.get(email1);
+		System.out.println("Hello "+obj.getname()+"!! What detail do you want to change?");
+		System.out.println("\tEdit id: Enter 1\n\tEdit name: Enter 2\n\tEdit age: Enter 3\n\tEdit gender: Enter 4\n\tEdit city: Enter 5");
+		int choice=s.nextInt();
+		switch(choice)
+		{
+		case 1:
+			System.out.println("Enter new id: ");
+			obj.setid(s.nextInt());
+			break;
+		case 2:
+			System.out.println("Enter new name: ");
+			s.nextLine();
+			obj.setname(s.nextLine());
+			break;
+		case 3:
+			System.out.println("Enter new age: ");
+			obj.setage(s.nextInt());
+			break;
+		case 4:
+			System.out.println("Enter your gender: ");
+			s.nextLine();
+			obj.setgender(s.nextLine().charAt(0));
+			break;
+		case 5:
+			System.out.println("Enter new city: ");
+			s.nextLine();
+			obj.setcity(s.nextLine());
+			break;
+		default:
+			System.out.print("Enter values 1-5");
+			break;
+				
+		}
+	}
+	public static void display()
+	{
+		det obj=(det.m).get(email1);
+		System.out.println("Hello "+obj.getname()+"!! What detail do you want to display?");
+		System.out.println("\tDisplay id: Enter 1\n\tDisplay name: Enter 2\n\tDisplay age: Enter 3\n\tDisplay gender: Enter 4\n\tDisplay city: Enter 5");
+		int choice=s.nextInt();
+		switch(choice)
+		{
+		case 1:
+			System.out.println("Your id: "+obj.getid());
+			break;
+		case 2:
+			System.out.println("Your name: "+obj.getname());
+			break;
+		case 3:
+			System.out.println("Your age: "+obj.getage());
+			break;
+		case 4:
+			System.out.println("Gender: "+obj.getgender());
+			break;
+		case 5:
+			System.out.println("Your city: "+obj.getcity());
+			break;
+		default:
+			System.out.print("Enter values 1-5");
+			break;
+		}
+	}
+	public static void displayall()
+	{
+		Iterator <String> it = m.keySet().iterator();      
+		while(it.hasNext())  
+		{  
+		String key=it.next();  
+		System.out.println("Username: "+key);
+		printer(key);
+		}  
+	}
+}	
+
+-------class 5-----
+package project;
+import java.util.*;
+public class details
+{
+
+static Scanner s=new Scanner(System.in);
+
+public static boolean checkid(String string) {
+    if(string == null || string.equals("")) {
+        System.out.println("Number is null or empty....");
+        return false;
+    }
+    
+    try {
+        int idcheck = Integer.parseInt(string);
+        return true;
+    } catch (NumberFormatException e) {
+        System.out.println("Enter a number!!!!!");
+    }
+    return false;
+}
+static boolean checkname(String n)
+{
+	char ar[]=n.toCharArray();
+	for(char i:ar)
+	{
+		if(Character.isAlphabetic(i) || i==' ') {
+			continue;}
+		else {
+			System.out.println("Enter correct value without numbers and special characters......");
+			return false;
+		}
+	}
+	return true;
+}
+}
+
+Output:
+		WELCOME
+->Sign Up: Enter 1
+->Log in: Enter 2
+->Exit: Enter 3
+1
+------------------------------------------------------------
+Enter your email-id
+jd@jd.com
+------------------------------------------------------------
+Enter password
+aaaAAA111!
+------------------------------------------------------------
+Please fill your details...
+
+Enter your id: 1
+Enter your Name: johan
+Enter your age: 21
+Enter your Gender:(m or f) m
+Enter your City: ngl
+		You have filled your details successfully
+
+------------------------------------------------------------
+->Sign Up: Enter 1
+->Log in: Enter 2
+->Exit: Enter 3
+1
+------------------------------------------------------------
+Enter your email-id
+paul@email.com
+------------------------------------------------------------
+Enter password
+qqqQQQ111!
+------------------------------------------------------------
+Please fill your details...
+
+Enter your id: 2
+Enter your Name: paul
+Enter your age: 23
+Enter your Gender:(m or f) m
+Enter your City: chn
+		You have filled your details successfully
+
+------------------------------------------------------------
+->Sign Up: Enter 1
+->Log in: Enter 2
+->Exit: Enter 3
+1
+------------------------------------------------------------
+Enter your email-id
+abc@abc.com
+------------------------------------------------------------
+Enter password
+abcABC123
+Password should be of 8 characters with atleast one 
+	*uppercase alphabet
+	*number
+	*special character
+Enter valid password: 
+abcABC123!
+------------------------------------------------------------
+Please fill your details...
+
+Enter your id: 3
+Enter your Name: abc
+Enter your age: 33
+Enter your Gender:(m or f) f
+Enter your City: blr
+		You have filled your details successfully
+
+------------------------------------------------------------
+->Sign Up: Enter 1
+->Log in: Enter 2
+->Exit: Enter 3
+2
+------------------------------------------------------------
+Enter your email-id
+jd@jd.com
+------------------------------------------------------------
+Enter password
+aaaAAA111!
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+1
+
+Name: johan
+Details:
+
+Id: 1
+Age: 21
+Gender: m
+City: ngl
+------------------------------------------------------------
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+2
+Hello johan!! What detail do you want to change?
+	Edit id: Enter 1
+	Edit name: Enter 2
+	Edit age: Enter 3
+	Edit gender: Enter 4
+	Edit city: Enter 5
+3
+Enter new age: 
+23
+------------------------------------------------------------
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+1
+
+Name: johan
+Details:
+
+Id: 1
+Age: 23
+Gender: m
+City: ngl
+------------------------------------------------------------
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+3
+Hello johan!! What detail do you want to display?
+	Display id: Enter 1
+	Display name: Enter 2
+	Display age: Enter 3
+	Display gender: Enter 4
+	Display city: Enter 5
+5
+Your city: ngl
+------------------------------------------------------------
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+4
+Username: jd@jd.com
+
+Name: johan
+Details:
+
+Id: 1
+Age: 23
+Gender: m
+City: ngl
+------------------------------------------------------------
+Username: paul@email.com
+
+Name: paul
+Details:
+
+Id: 2
+Age: 23
+Gender: m
+City: chn
+------------------------------------------------------------
+Username: abc@abc.com
+
+Name: abc
+Details:
+
+Id: 3
+Age: 33
+Gender: f
+City: blr
+------------------------------------------------------------
+------------------------------------------------------------
+Display all details: Enter 1
+Update any detail: Enter 2
+Display a single detail: Enter 3
+Display every users along with details: Enter 4
+Log Out: Enter 5
+5
+------------------------------------------------------------
+->Sign Up: Enter 1
+->Log in: Enter 2
+->Exit: Enter 3
+3
+------------------------------------------------------------
+			THANK YOU
