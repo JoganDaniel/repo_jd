@@ -1,0 +1,43 @@
+class Singleton
+{
+    public String s;
+	private Singleton()
+	{
+		s="value 1";
+	}
+	private static  Singleton single_obj=null;
+	public static Singleton getInstance()
+	{
+		if(single_obj==null)
+			single_obj=new Singleton();
+		
+	return single_obj;
+	}
+}
+class Main
+{
+    public static void main(String args[])
+    {
+    	Singleton ob1=Singleton.getInstance();
+    	Singleton ob2=Singleton.getInstance();
+    	Singleton ob3=Singleton.getInstance();
+    	System.out.println(ob1.hashCode());
+    	System.out.println(ob2.hashCode());
+    	System.out.println(ob3.hashCode());
+    	System.out.println(ob1.s);
+    	ob1.s="value 2";
+    	System.out.println(ob1.s);
+    	System.out.println(ob2.s);
+    	ob2.s="value 3";
+    	System.out.println(ob3.s);
+    	} 
+    }
+    
+Output:
+140435067
+140435067
+140435067
+value 1
+value 2
+value 2
+value 3
