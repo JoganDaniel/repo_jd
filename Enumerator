@@ -1,0 +1,33 @@
+public class claz
+{
+	public enum enumerator{
+		SUNDAY,
+		MONDAY,
+		TUESDAY,
+		WEDNESDAY,
+		THURSDAY,
+		FRIDAY,
+		SATURDAY;
+	}
+  public static void main(String arg[])
+  {
+	  for(enumerator s: enumerator.values())
+	  {
+		  System.out.println(s);
+	  }
+	   System.out.println("\n"+enumerator.valueOf("WEDNESDAY"));
+	   System.out.println(enumerator.valueOf("FRIDAY").ordinal());
+	}
+}
+
+Output:
+SUNDAY
+MONDAY
+TUESDAY
+WEDNESDAY
+THURSDAY
+FRIDAY
+SATURDAY
+
+WEDNESDAY
+5
